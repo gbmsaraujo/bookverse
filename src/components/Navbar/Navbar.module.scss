@@ -1,0 +1,29 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  box-shadow: 2px 2px 3px rgba(103, 12, 117, 0.399);
+
+  h2 {
+    color: $logo_color;
+    font-size: 28px;
+  }
+
+  .navHeader {
+    ul {
+      display: flex;
+      gap: 10px;
+
+      li {
+        list-style: none;
+        cursor: pointer;
+        transition: all ease 0.3s;
+
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
