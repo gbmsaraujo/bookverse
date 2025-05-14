@@ -3,9 +3,9 @@
     <h2>Bookverse</h2>
     <nav :class="styles.navHeader">
       <ul>
-        <li>Home</li>
-        <li>Minha Biblioteca</li>
-        <li>Buscar Livros</li>
+        <RouterLink to="/"><li>Home</li></RouterLink>
+        <RouterLink to="/library"><li>Minha Biblioteca</li></RouterLink>
+        <RouterLink to="/discover"><li>Buscar Livros</li></RouterLink>
         <li><n-dropdown :options="options" trigger="click"> Perfil </n-dropdown></li>
       </ul>
     </nav>
@@ -21,6 +21,7 @@ import {
 } from '@vicons/ionicons5'
 import { NIcon, NDropdown } from 'naive-ui'
 import { h, reactive } from 'vue'
+import { RouterLink } from 'vue-router'
 
 function renderIcon(icon) {
   return () => {
