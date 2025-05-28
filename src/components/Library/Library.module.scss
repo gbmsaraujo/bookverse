@@ -1,0 +1,18 @@
+.libraryContainer {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f0eaffc0;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: $logo_color;
+  }
+
+  .booksFlex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+}

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home/Home.vue'
 import Discover from '../views/Discover/Discover.vue'
 import NotFound from '../views/NotFound/NotFound.vue'
+import Library from '../components/Library/Library.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const router = createRouter({
       path: '/discover',
       name: 'discover',
       component: Discover
+    },
+    {
+      path: '/library',
+      name: 'library',
+      component: Library
     },
     {
       path: '/:pathMatch(.*)*',
