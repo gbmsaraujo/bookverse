@@ -1,14 +1,12 @@
 <template>
   <main :class="styles.homeContainer">
     <h1>BookVerse!</h1>
-    <p class="subtitle">
-      Explore milhões de livros e crie sua biblioteca personalizada.
-    </p>
+    <p :class="styles.subtitle">Explore milhões de livros e crie sua biblioteca personalizada.</p>
 
     <div v-if="isLoggedIn">
-      <p class="welcomeMessage">Olá, {{ userName }}. Seja bem-vindo!</p>
-      <div class="card">
-        <div class="icon">📖</div>
+      <p :class="styles.welcomeMessage">Olá, {{ userName }}. Seja bem-vindo!</p>
+      <div :class="styles.card">
+        <div :class="styles.icon">📖</div>
         <p>
           Você adicionou {{ totalLivros }} livros em sua <br />
           biblioteca :)
@@ -28,7 +26,7 @@
 import styles from './Home.module.scss'
 import { ref } from 'vue'
 
-const isLoggedIn = ref(true)
-const userName = 'Gabriel'
+const isLoggedIn = ref(false)
+const userName = 'Filipe'
 const totalLivros = 3
 </script>

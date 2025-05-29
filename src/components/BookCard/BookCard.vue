@@ -10,10 +10,12 @@
     <p>
       {{ description }}
     </p>
+    <RatingStars />
   </section>
 </template>
 
 <script setup>
+import RatingStars from '../RatingStars/RatingStars.vue';
 import styles from './BookCard.module.scss'
 
 defineProps({

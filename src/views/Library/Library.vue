@@ -1,6 +1,10 @@
 <template>
   <main :class="styles.libraryContainer">
-    <h1>Minha Biblioteca</h1>
+    <h1 :class="styles.title">Minha Biblioteca</h1>
+    <div :class="styles.addBookBox">
+      <p>Adicionar novo livro</p>
+      <AddCircle :class="styles.addIcon" @click="useNavigation('/discover')" />
+    </div>
     <div :class="styles.booksFlex">
       <BookCard
         v-for="(book, index) in books"
@@ -15,7 +19,9 @@
 
 <script setup>
 import styles from './Library.module.scss'
-import BookCard from '../BookCard/BookCard.vue';
+import BookCard from '@/components/BookCard/BookCard.vue'
+import { AddCircle } from '@vicons/ionicons5'
+import { useNavigation } from '@/hooks/navigationHook'
 
 const books = [
   {
