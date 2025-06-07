@@ -1,6 +1,6 @@
 <template>
   <section :class="styles.bookCardContainer">
-    <img src="@/assets/covers/book.png" alt="Imagem do Livro" />
+    <img :src="urlImage" alt="Imagem do Livro" />
     <h2>
       Livro: <span :class="styles.book">{{ title }}</span>
     </h2>
@@ -19,6 +19,7 @@ import RatingStars from '../RatingStars/RatingStars.vue';
 import styles from './BookCard.module.scss'
 
 defineProps({
+  urlImage:String,
   title: String,
   author: String,
   description: String,
