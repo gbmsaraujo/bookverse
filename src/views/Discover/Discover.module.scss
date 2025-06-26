@@ -1,13 +1,30 @@
-.searchContainer{
-  h2{
+.searchContainer {
+  h2 {
     text-align: center;
     margin: 10% 0 2% 0;
   }
-  .inputBox{
+  h3{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 24px;
+  }
+  .inputBox {
     display: flex;
     flex-direction: column;
     width: 30%;
-    gap:10px;
+    gap: 10px;
     margin: 0 auto;
   }
+}
+
+.bookResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // flex-direction: column;
+  border-radius: 10px;
+  gap: 10px;
+  padding: 10px 20px;
+  // border-radius: 10px;
+  // align-items: center;
 }

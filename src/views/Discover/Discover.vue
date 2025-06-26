@@ -8,13 +8,15 @@
     </div>
     <h3>Resultados: {{ booksFounded.length }}</h3>
 
-    <div v-show="booksFounded.length" v-for="(book, index) in booksFounded" :key="index">
-      <BookCard
-        :author="book.author"
-        :title="book.title"
-        :description="book.description"
-        :urlImage="book.urlImage"
-      />
+    <div :class="styles.bookResults">
+      <div v-show="booksFounded.length" v-for="(book, index) in booksFounded" :key="index">
+        <BookCard
+          :author="book.author"
+          :title="book.title"
+          :description="book.description"
+          :urlImage="book.urlImage"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -25,13 +27,15 @@ import { computed, reactive, ref } from 'vue'
 import styles from './Discover.module.scss'
 import { NInput, NButton } from 'naive-ui'
 import BookCard from '../../components/BookCard/BookCard.vue'
+import { GOOGLE_API_KEY } from '../../config/constants'
+import DefaultImage from '@/assets/covers/book.png'
 
 const bookName = ref('')
 const authorName = ref('')
 let booksFounded = ref([])
 
 const createUrlSearch = (bookName, authorName) => {
-  return `https://www.googleapis.com/books/v1/volumes?key=(insira-chave-aqui)&q=${bookName}+inauthor:${authorName}`
+  return `https://www.googleapis.com/books/v1/volumes?key=${GOOGLE_API_KEY}&q=${bookName}+inauthor:${authorName}`
 }
 
 const handleSearchBook = async () => {
@@ -58,13 +62,17 @@ const formatStringToSearch = (stringItem) => {
 }
 
 const formatFoundedBooks = (items) => {
-  return items.map((currentValue) => {
-    return {
-      title: currentValue.volumeInfo.title,
-      author: currentValue.volumeInfo.authors.join(', '),
-      description: currentValue.volumeInfo.description,
-      urlImage: currentValue?.volumeInfo?.imageLinks?.thumbnail,
-    }
-  })
+  try {
+    return items.map((currentValue) => {
+      return {
+        title: currentValue.volumeInfo.title,
+        author: currentValue?.volumeInfo?.authors?.join(', ') || "Desconhecido",
+        description: currentValue.volumeInfo.description,
+        urlImage: currentValue?.volumeInfo?.imageLinks?.thumbnail || DefaultImage,
+      }
+    })
+  } catch (err) {
+    console.warn(`Impossível formatar dados da API: ${err}`)
+  }
 }
 </script>

@@ -7,21 +7,20 @@
     <h3>
       Autor: <span :class="styles.author">{{ author }}</span>
     </h3>
-    <p>
-      {{ description }}
-    </p>
+    <p :title="description" v-show="description">Passe o mouse, para ler descrição</p>
     <RatingStars />
   </section>
 </template>
 
 <script setup>
-import RatingStars from '../RatingStars/RatingStars.vue';
+import RatingStars from '../RatingStars/RatingStars.vue'
 import styles from './BookCard.module.scss'
+import DefaultImage from '@/assets/covers/book.png'
 
 defineProps({
-  urlImage:String,
-  title: String,
-  author: String,
-  description: String,
+  urlImage: { type: String, default: DefaultImage },
+  title: { type: String },
+  author: { type: String },
+  description: { type: String },
 })
 </script>
