@@ -12,18 +12,18 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import styles from './Navbar.module.scss'
 import {
   Pencil as EditIcon,
   LogOutOutline as LogoutIcon,
   PersonCircleOutline as UserIcon,
 } from '@vicons/ionicons5'
-import { NIcon, NDropdown } from 'naive-ui'
-import { h, reactive } from 'vue'
+import { NDropdown, NIcon, type DropdownOption } from 'naive-ui'
+import { h, reactive, type Component } from 'vue'
 import { RouterLink } from 'vue-router'
 
-function renderIcon(icon) {
+function renderIcon(icon: Component) {
   return () => {
     return h(NIcon, null, {
       default: () => h(icon),
@@ -31,7 +31,7 @@ function renderIcon(icon) {
   }
 }
 
-const options = reactive([
+const options = reactive<DropdownOption[]>([
   {
     label: 'Perfil',
     key: 'profile',
