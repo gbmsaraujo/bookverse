@@ -12,6 +12,8 @@
         :title="book.title"
         :author="book.author"
         :description="book.description"
+        :status="book.status"
+        :showRating="true"
       />
     </div>
   </main>
@@ -28,26 +30,31 @@ const books = [
     title: 'O Senhor dos Anéis',
     author: 'J.R.R. Tolkien',
     description: 'Uma jornada épica pela Terra Média em busca de destruir o Um Anel.',
+    status: 'Quero ler',
   },
   {
     title: '1984',
     author: 'George Orwell',
     description: 'Uma distopia que mostra um regime totalitário e vigilância extrema.',
+    status: 'Lido',
   },
   {
     title: 'Dom Casmurro',
     author: 'Machado de Assis',
     description: 'A história de Bento Santiago e suas dúvidas sobre a fidelidade de Capitu.',
+    status: 'Lendo',
   },
   {
     title: 'Harry Potter e a Pedra Filosofal',
     author: 'J.K. Rowling',
     description: 'O início da jornada de Harry Potter no mundo da magia.',
+    status: 'Quero ler',
   },
   {
     title: 'O Pequeno Príncipe',
     author: 'Antoine de Saint-Exupéry',
     description: 'Uma fábula filosófica sobre amor, amizade e o essencial da vida.',
+    status: 'Lido',
   },
 ]
 </script>

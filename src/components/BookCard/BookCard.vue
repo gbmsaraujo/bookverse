@@ -8,7 +8,8 @@
       Autor: <span :class="styles.author">{{ author }}</span>
     </h3>
     <p :title="description" v-show="description">Passe o mouse, para ler descrição</p>
-    <RatingStars />
+    <div v-if="status" :class="styles.status">Status: {{ status }}</div>
+    <RatingStars v-if="showRating" />
   </section>
 </template>
 
@@ -22,5 +23,7 @@ defineProps({
   title: { type: String },
   author: { type: String },
   description: { type: String },
+  status: { type: String, default: '' },
+  showRating: { type: Boolean, default: true },
 })
 </script>

@@ -8,13 +8,15 @@
     </div>
     <h3>Resultados: {{ booksFounded.length }}</h3>
 
-    <div :class="styles.bookResults">
+    <Loader v-if="loading" />
+    <div :class="styles.bookResults" v-else>
       <div v-show="booksFounded.length" v-for="(book, index) in booksFounded" :key="index">
         <BookCard
           :author="book.author"
           :title="book.title"
           :description="book.description"
           :urlImage="book.urlImage"
+          :showRating="false"
         />
       </div>
     </div>
@@ -23,16 +25,18 @@
 
 <script setup>
 import axios from 'axios'
-import { computed, reactive, ref } from 'vue'
+import { ref } from 'vue'
 import styles from './Discover.module.scss'
 import { NInput, NButton } from 'naive-ui'
 import BookCard from '../../components/BookCard/BookCard.vue'
+import Loader from '../../components/Loader/Loader.vue'
 import { GOOGLE_API_KEY } from '../../config/constants'
 import DefaultImage from '@/assets/covers/book.png'
 
 const bookName = ref('')
 const authorName = ref('')
 let booksFounded = ref([])
+const loading = ref(false)
 
 const createUrlSearch = (bookName, authorName) => {
   return `https://www.googleapis.com/books/v1/volumes?key=${GOOGLE_API_KEY}&q=${bookName}+inauthor:${authorName}`
@@ -40,6 +44,7 @@ const createUrlSearch = (bookName, authorName) => {
 
 const handleSearchBook = async () => {
   try {
+    loading.value = true
     const bookNameFormated = formatStringToSearch(bookName.value)
     const authorNameFormated = formatStringToSearch(authorName.value)
     const url = createUrlSearch(bookNameFormated, authorNameFormated)
@@ -49,6 +54,8 @@ const handleSearchBook = async () => {
     booksFounded.value = formatFoundedBooks(items)
   } catch (err) {
     console.log(err)
+  } finally {
+    loading.value = false
   }
 }
 
