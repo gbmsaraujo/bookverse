@@ -1,0 +1,9 @@
+.ratingContainer {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+  .starIcon {
+    width: 28px;
+    cursor: pointer;
+  }
+}

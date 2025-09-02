@@ -1,0 +1,35 @@
+.bookCardContainer{
+
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  background-color: rgba(218, 105, 218, 0.473);
+  border-radius: 10px;
+  padding: 10px 20px;
+  align-items: center;
+
+
+  img{
+    max-width: 150px;
+  }
+
+  .book, .author{
+    font-weight: 500;
+  }
+
+  .book{
+    font-size: 18px;
+  }
+
+  p{
+    text-align: justify;
+    text-overflow: ellipsis;
+  }
+}
+
+.status {
+  margin-top: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b21a8;
+}
